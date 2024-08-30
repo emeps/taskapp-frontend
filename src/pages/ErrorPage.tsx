@@ -1,7 +1,22 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Lottie from "lottie-react";
+import errorPageAnimation from "../assets/animations/page_not_found.json";
 
 export function ErrorPage() {
   const error = useRouteError();
+  const navigate = useNavigate();
+  
+  const handleRedirect = () => navigate("/");
+
   console.error(error);
   let errorMessage;
   if (error instanceof Error) {
@@ -9,15 +24,23 @@ export function ErrorPage() {
   } else if (typeof error === "string") {
     errorMessage = error;
   } else {
-    errorMessage = "An unexpected error has occurred.";
-  }  
+    errorMessage = "A página que você está buscando pode não existir ou não estar disponível!";
+  }
+
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{errorMessage}</i>
-      </p>
+    <div className="flex h-screen items-center justify-center">
+      <Card className="w-full max-w-2xl p-6 border-none">
+        <CardHeader>
+          <CardTitle className="text-3xl">Opss! Página não encontrada</CardTitle>
+          <CardDescription>{errorMessage}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center justify-center">
+          <Lottie animationData={errorPageAnimation} loop={true} />
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <Button onClick={handleRedirect}>Voltar!</Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
