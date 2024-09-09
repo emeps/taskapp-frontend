@@ -23,6 +23,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const formSchema = z.object({
   name: z
@@ -68,6 +70,8 @@ const formSchema = z.object({
 });
 
 export function Register() {
+  const navigate = useNavigate()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -77,11 +81,19 @@ export function Register() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // TODO: Falta finalizar a validação do login e redirecionar o usuario para pagina principal
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try{
+      const response = await axios.post("http://localhost:3001/auth/register",{
+        name:values.name,
+        email: values.email,
+        password: values.password
+      })
+      navigate('/login')
+    }catch (error) {
+      console.error("Erro de autenticação:", error.response?.data || error.message);
+    }
+    
   }
-
   return (
     <div className="flex items-center justify-center h-screen">
       <Card className="max-w-md w-full">
