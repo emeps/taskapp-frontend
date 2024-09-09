@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Projeto Frontend - Gerenciamento de Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto frontend foi construído utilizando Vite com React e Tailwind CSS, integrando bibliotecas como Zod para validação de dados, Shadcn para componentes de UI, e Lottie para animações.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (v16 ou superior)
+- Yarn ou NPM
 
-## Expanding the ESLint configuration
+## Instalação
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone o repositório:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+https://github.com/emeps/taskapp-frontend.git
+cd frontend
 ```
+2. Instale as dependência:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+$ yarn install
+# ou 
+$ npm install
 ```
+3. Inicie o servidor:
+
+```bash
+$ yarn dev
+# ou
+$ npm run dev
+```
+O frontend estará rodando em http://localhost:5173.
+
+## Funcionalidades Principais
+- Autenticação: O usuário pode fazer login e cadastro utilizando o backend para geração de token JWT.
+- Gerenciamento de Tarefas: Criação, edição, visualização e exclusão de tarefas.
+- Validação com Zod: Validação de formulários e dados de entrada.
+- Componentes UI com Shadcn: Utilização de componentes prontos e customizados para melhorar a interface.
+- Animações com Lottie: Integração de animações interativas no frontend.
+## Tecnologias Utilizadas
+- Vite: Ferramenta para desenvolvimento rápido de projetos com React.
+- React: Biblioteca para construção da interface do usuário.
+- Tailwind CSS: Framework CSS para estilização rápida e eficiente.
+- Shadcn: Biblioteca para componentes de UI.
+- Zod: Biblioteca de validação de dados e esquemas.
+- Lottie: Biblioteca para animações em JSON.
