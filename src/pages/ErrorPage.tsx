@@ -29,10 +29,11 @@ export function ErrorPage() {
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <Card className="w-full max-w-2xl p-6 border-none">
+      <Card className="w-full max-w-2xl p-6 border-none shadow-none">
         <CardHeader>
-          <CardTitle className="text-3xl">Opss! Página não encontrada</CardTitle>
-          <CardDescription>{errorMessage}</CardDescription>
+          <CardTitle className="text-3xl"><p>Ocorreu um erro inesperado.</p> 
+          <CardDescription><p>Estamos trabalhando para resolvê-lo o mais rápido possível.</p></CardDescription>
+          </CardTitle>
         </CardHeader>
         <CardContent className="flex items-center justify-center">
           <Lottie animationData={errorPageAnimation} loop={true} />
